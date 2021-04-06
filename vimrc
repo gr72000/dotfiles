@@ -57,6 +57,8 @@ set scrolloff=4
 set showfulltag
 vnoremap <leader>p "_dP
 nnoremap <F8> :TagbarToggle<cr>
+nnoremap <leader>vm :vertical terminal make<cr>
+nnoremap <f9> :make<cr>
 
 "Ver si de verdad sirve"
 nnoremap <leader>m :call VimuxRunCommand("g++ % && ./a.out")<cr>
