@@ -16,6 +16,7 @@ Plugin 'junegunn/vim-peekaboo'
 Plugin 'preservim/vimux'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'sainnhe/gruvbox-material'
 "Plugin 'tpope/vim-repeat' te potencia el '.'.
 " plugins here
 " plugins here
@@ -78,3 +79,28 @@ let g:UltiSnipsExpandTrigger="`"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
+
+"gruvbox material
+if has('termguicolors')
+  set termguicolors
+endif
+
+" Enable true color 启用终端24位色
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif                                                                                    
+
+" For dark version.
+set background=dark
+                                                                                    
+" For light version.
+"set background=light
+                                                                                    
+" Set contrast.
+" This configuration option should be placed before `colorscheme gruvbox-material`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_background = 'hard'
+                                                                                    
+colorscheme gruvbox-material

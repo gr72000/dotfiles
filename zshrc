@@ -10,6 +10,9 @@ zplug load
 # vim as default editor
 export EDITOR='vim'
 
+# Avoid beeping
+setopt nobeep
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -115,4 +118,5 @@ _comp_options+=(globdots)		# Include hidden files.
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
 
