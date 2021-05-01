@@ -7,6 +7,8 @@ zplug 'zsh-users/zsh-completions'
 
 zplug load
 
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # vim as default editor
 export EDITOR='vim'
 
@@ -28,7 +30,10 @@ zstyle :compinstall filename '/home/gr/.zshrc'
 PROMPT_EOL_MARK=""
 
 autoload -Uz compinit
-compinit
+compinit -d ~/.cache/zcompdump
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' #case insensitive tab completion
+_comp_options+=(globdots)
 # End of lines added by compinstall
 
 new_line_before_prompt=yes
@@ -87,23 +92,24 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then . /usr/sh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
-
-setopt prompt_subst
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' stagedstr 'M' 
-zstyle ':vcs_info:*' unstagedstr 'M' 
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats \
-  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-zstyle ':vcs_info:*' enable git 
-+vi-git-untracked() {
-  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-    git status --porcelain | grep '??' &> /dev/null ; then
-    hook_com[unstaged]+='%F{1}??%f'
-  fi  
-}
+# commented out because 'starship'
+#
+# setopt prompt_subst
+# autoload -Uz vcs_info
+# zstyle ':vcs_info:*' stagedstr 'M' 
+# zstyle ':vcs_info:*' unstagedstr 'M' 
+# zstyle ':vcs_info:*' check-for-changes true
+# zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+# zstyle ':vcs_info:*' formats \
+#   '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
+# zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+# zstyle ':vcs_info:*' enable git 
+# +vi-git-untracked() {
+#   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+#     git status --porcelain | grep '??' &> /dev/null ; then
+#     hook_com[unstaged]+='%F{1}??%f'
+#   fi  
+# }
 
 precmd () { vcs_info }
 PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
@@ -119,4 +125,4 @@ _comp_options+=(globdots)		# Include hidden files.
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-
+eval "$(starship init zsh)"
