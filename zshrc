@@ -68,6 +68,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias tl='tmux ls'
     alias tt='vim .tmux.conf'
     alias L='| less'
+    alias ra='rsync -vrP --delete-after ~/antonioscenna/index.html antonio@136.244.94.234:/var/www/antonio'
 
     export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
     export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold

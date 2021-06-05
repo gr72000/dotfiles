@@ -7,7 +7,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'psliwka/vim-smoothie'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-dispatch'
 Plugin 'vim-airline/vim-airline'
@@ -60,6 +60,10 @@ vnoremap <leader>p "_dP
 nnoremap <F8> :TagbarToggle<cr>
 nnoremap <leader>vm :vertical terminal make<cr>
 nnoremap <f9> :make<cr>
+
+"Compile & opend output. Pandoc
+nnoremap <leader>g :w! \| !comp <c-r>%<CR><CR>
+nnoremap <leader>o :!opout <c-r>%<CR><CR>
 
 "Ver si de verdad sirve"
 nnoremap <leader>m :call VimuxRunCommand("g++ % && ./a.out")<cr>
