@@ -31,6 +31,7 @@ set infercase
 set number
 set relativenumber
 let mapleader = "\<Space>"
+inoremap jk <esc>
 nmap <leader>vr :vsp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
 set backspace=indent,eol,start
